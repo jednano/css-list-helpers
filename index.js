@@ -59,14 +59,14 @@ var helpers = {
 		}
 	),
 
-	space: t.func(t.String, t.Array).of(
+	splitBySpaces: t.func(t.String, t.Array).of(
 		function(value) {
 			var spaces = [' ', '\n', '\t'];
 			return split(value, spaces);
 		}
 	),
 
-	comma: t.func(t.String, t.Array).of(
+	splitByCommas: t.func(t.String, t.Array).of(
 		function(value) {
 			var comma = ',';
 			return split(value, [comma], { isLast: true });

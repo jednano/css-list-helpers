@@ -3,40 +3,40 @@ var tape = require('tape');
 var listHelpers = require('..');
 
 tape('css-list-helpers', function(t) {
-	t.test('space()', testspace);
-	t.test('comma()', testcomma);
+	t.test('splitBySpaces()', testspace);
+	t.test('splitByCommas()', testcomma);
 	t.end();
 });
 
 function testspace(t) {
 
 	t.deepEqual(
-		listHelpers.space('a b'),
+		listHelpers.splitBySpaces('a b'),
 		['a', 'b'],
 		'splits a list by spaces'
 	);
 
 	t.deepEqual(
-		listHelpers.space(' a b '),
+		listHelpers.splitBySpaces(' a b '),
 		['a', 'b'],
 		'trims values'
 	);
 
 	t.deepEqual(
-		listHelpers.space('"a b\\"" \'\''),
+		listHelpers.splitBySpaces('"a b\\"" \'\''),
 		['"a b\\""', '\'\''],
 		'does not split by spaces within quotes'
 	);
 
 	t.deepEqual(
-		listHelpers.space('f( )) a( () )'),
+		listHelpers.splitBySpaces('f( )) a( () )'),
 		['f( ))', 'a( () )'],
 		'does not split by spaces within functions'
 	);
 
-	var space = listHelpers.space;
+	var splitBySpaces = listHelpers.splitBySpaces;
 	t.deepEqual(
-		space('a b'),
+		splitBySpaces('a b'),
 		['a', 'b'],
 		'works from a variable'
 	);
@@ -47,32 +47,32 @@ function testspace(t) {
 function testcomma(t) {
 
 	t.deepEqual(
-		listHelpers.comma('a, b'),
+		listHelpers.splitByCommas('a, b'),
 		['a', 'b'],
 		'splits a list by commas'
 	);
 
 	t.deepEqual(
-		listHelpers.comma('a, b,'),
+		listHelpers.splitByCommas('a, b,'),
 		['a', 'b', ''],
 		'ends with an empty string if input has a trailing comma'
 	);
 
 	t.deepEqual(
-		listHelpers.comma('"a,b\\"", \'\''),
+		listHelpers.splitByCommas('"a,b\\"", \'\''),
 		['"a,b\\""', '\'\''],
 		'does not split by commas within quotes'
 	);
 
 	t.deepEqual(
-		listHelpers.comma('f(,)), a(,(),)'),
+		listHelpers.splitByCommas('f(,)), a(,(),)'),
 		['f(,))', 'a(,(),)'],
 		'does not split by commas within functions'
 	);
 
-	var comma = listHelpers.comma;
+	var splitByCommas = listHelpers.splitByCommas;
 	t.deepEqual(
-		comma('a, b'),
+		splitByCommas('a, b'),
 		['a', 'b'],
 		'works from a variable'
 	);
