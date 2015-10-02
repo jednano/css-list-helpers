@@ -1,6 +1,6 @@
 {
   "name": "css-list-helpers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helper methods for splitting CSS lists (e.g., spaces, commas).",
   "main": "index.js",
   "scripts": {

@@ -3,12 +3,13 @@ var tape = require('tape');
 var listHelpers = require('..');
 
 tape('css-list-helpers', function(t) {
-	t.test('splitBySpaces()', testspace);
-	t.test('splitByCommas()', testcomma);
+	t.test('splitBySpaces()', testSpace);
+	t.test('splitByCommas()', testComma);
+	t.test('split()', testSplit);
 	t.end();
 });
 
-function testspace(t) {
+function testSpace(t) {
 
 	t.deepEqual(
 		listHelpers.splitBySpaces('a b'),
@@ -44,7 +45,7 @@ function testspace(t) {
 	t.end();
 }
 
-function testcomma(t) {
+function testComma(t) {
 
 	t.deepEqual(
 		listHelpers.splitByCommas('a, b'),
@@ -75,6 +76,17 @@ function testcomma(t) {
 		splitByCommas('a, b'),
 		['a', 'b'],
 		'works from a variable'
+	);
+
+	t.end();
+}
+
+function testSplit(t) {
+
+	t.deepEqual(
+		listHelpers.split('a/fn(b / c)', ['/']),
+		['a', 'fn(b / c)'],
+		'splits a list by a custom character (e.g., forward slash)'
 	);
 
 	t.end();

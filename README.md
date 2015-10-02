@@ -20,6 +20,7 @@ $ npm install css-list-helpers [--save[-dev]]
 var listHelpers = require('css-list-helpers');
 listHelpers.splitBySpaces(' 0 a(b / c) "d e" ');   // ['0', 'a(b / c)', '"d e"']
 listHelpers.splitByCommas(' 0, a(b / c), "d e" '); // ['0', 'a(b / c)', '"d e"']
+listHelpers.split('a/fn(b / c)', ['/']);           // ['a', 'fn(b / c)']
 ```
 
 ## Testing
