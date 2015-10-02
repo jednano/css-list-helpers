@@ -6,11 +6,7 @@
 
 [![npm](https://nodei.co/npm/css-list-helpers.svg?downloads=true)](https://nodei.co/npm/css-list-helpers/)
 
-Helper methods for splitting CSS lists (i.e., by spaces or commas).
-
-## Introduction
-
-TODO
+Helper methods for splitting CSS lists (i.e., by spaces or commas), extracted from [PostCSS#list](https://github.com/postcss/postcss/blob/master/lib/list.es6).
 
 ## Installation
 
@@ -24,9 +20,6 @@ $ npm install css-list-helpers [--save[-dev]]
 var listHelpers = require('css-list-helpers');
 listHelpers.splitBySpaces(' 0 a(b / c) "d e" ');   // ['0', 'a(b / c)', '"d e"']
 listHelpers.splitByCommas(' 0, a(b / c), "d e" '); // ['0', 'a(b / c)', '"d e"']
-listHelpers
-	.splitByCommas(' a b, c d ')
-	.map(listHelpers.splitBySpaces); // [['a', 'b'], ['c', 'd']]
 ```
 
 ## Testing
