@@ -1,82 +1,78 @@
-var t = require('tcomb');
-
-var Options = t.struct({
-	last: t.maybe(t.Boolean)
-});
+'use strict'
 
 var helpers = {
-
 	split: function(value, separators, options) {
-		return split(value, separators, options || {});
+		return split(value, separators, options);
 	},
 
-	splitBySpaces: t.func(t.String, t.Array).of(
-		function(value) {
-			var spaces = [' ', '\n', '\t'];
-			return helpers.split(value, spaces);
-		}
-	),
+	splitBySpaces: function(value) {
+		var spaces = [' ', '\n', '\t'];
+		return helpers.split(value, spaces);
+	},
 
-	splitByCommas: t.func(t.String, t.Array).of(
-		function(value) {
-			var comma = ',';
-			return helpers.split(value, [comma], { last: true });
-		}
-	)
-
+	splitByCommas: function(value) {
+		var comma = ',';
+		return helpers.split(value, [comma], { last: true });
+	}
 };
 
-var split = t.func([t.String, t.Array, Options], t.Array).of(
-	function(value, separators, options) {
-		var array   = [];
-		var current = '';
-		var split   = false;
 
-		var func    = 0;
-		var quote   = false;
-		var escape  = false;
+var split = function split (value, separators, options) {
+	if (typeof value !== 'string') throw Error('First argument must be a string')
 
-		for (var i = 0; i < value.length; i++) {
-			var char = value[i];
+	if (typeof separators === 'string') separators = [separators];
+	else if (!Array.isArray(separators)) throw Error('Separators must be a string or a list')
 
-			if (quote) {
-				if (escape) {
-					escape = false;
-				} else if (char === '\\') {
-					escape = true;
-				} else if (char === quote) {
-					quote = false;
-				}
-			} else if (char === '"' || char === '\'') {
-				quote = char;
-			} else if (char === '(') {
-				func += 1;
-			} else if (char === ')') {
-				if (func > 0) {
-					func -= 1;
-				}
-			} else if (func === 0) {
-				if (separators.indexOf(char) !== -1) {
-					split = true;
-				}
+	if (!options) options = {}
+
+	var array   = [];
+	var current = '';
+	var split   = false;
+
+	var func    = 0;
+	var quote   = false;
+	var escape  = false;
+
+	for (var i = 0; i < value.length; i++) {
+		var char = value[i];
+
+		if (quote) {
+			if (escape) {
+				escape = false;
+			} else if (char === '\\') {
+				escape = true;
+			} else if (char === quote) {
+				quote = false;
 			}
-
-			if (split) {
-				if (current !== '') {
-					array.push(current.trim());
-				}
-				current = '';
-				split = false;
-			} else {
-				current += char;
+		} else if (char === '"' || char === '\'') {
+			quote = char;
+		} else if (char === '(') {
+			func += 1;
+		} else if (char === ')') {
+			if (func > 0) {
+				func -= 1;
+			}
+		} else if (func === 0) {
+			if (separators.indexOf(char) !== -1) {
+				split = true;
 			}
 		}
 
-		if (options.last || current !== '') {
-			array.push(current.trim());
+		if (split) {
+			if (current !== '') {
+				array.push(current.trim());
+			}
+			current = '';
+			split = false;
+		} else {
+			current += char;
 		}
-		return array;
 	}
-);
+
+	if (options.last || current !== '') {
+		array.push(current.trim());
+	}
+	return array;
+}
 
 module.exports = helpers;
