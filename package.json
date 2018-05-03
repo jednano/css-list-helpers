@@ -26,11 +26,11 @@
     "url": "https://github.com/jedmao/css-list-helpers/issues"
   },
   "homepage": "https://github.com/jedmao/css-list-helpers#readme",
-  "dependencies": {
-    "tcomb": "^2.5.0"
-  },
   "devDependencies": {
-    "istanbul": "^0.3.21",
-    "tape": "^4.2.0"
+    "io-ts": "^1.0.6",
+    "nyc": "^11.7.1",
+    "tape": "^4.9.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3"
   }
 }
