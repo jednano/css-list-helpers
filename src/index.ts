@@ -11,10 +11,19 @@ export function split(
 	 * Any number of separator characters used for splitting.
 	 */
 	separators: string[],
-	options: {
-		last?: boolean;
+	{
+		last = false,
 	} = {},
 ) {
+	if (typeof value !== 'string') {
+		throw new TypeError('expected a string');
+	}
+	if (!Array.isArray(separators)) {
+		throw new TypeError('expected a string array of separators');
+	}
+	if (typeof last !== 'boolean') {
+		throw new TypeError('expected a Boolean value for options.last');
+	}
 	const array = [];
 	let current = '';
 	let splitMe = false;
@@ -58,7 +67,7 @@ export function split(
 		}
 	}
 
-	if (options.last || current !== '') {
+	if (last || current !== '') {
 		array.push(current.trim());
 	}
 	return array;

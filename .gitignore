@@ -1,5 +1,7 @@
-*.log
-.nyc_output/
-coverage/
+*.log*
+*.tgz
 dist/
 node_modules/
+coverage
+.nyc_output
+css-list-helpers-*/

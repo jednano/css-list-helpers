@@ -73,6 +73,30 @@ test('`splitByCommas` works from a variable', (t) => {
 	);
 });
 
+test('`split` throws if arg1 is a number', (t) => {
+	const error = t.throws(() => {
+		listHelpers.split(42 as any as string, []);
+	}, TypeError);
+
+	t.is(error.message, 'expected a string');
+});
+
+test('`split` throws if arg2 is a string', (t) => {
+	const error = t.throws(() => {
+		listHelpers.split('foo', 'bar' as any as string[]);
+	}, TypeError);
+
+	t.is(error.message, 'expected a string array of separators');
+});
+
+test('`split` throws if arg3.last is a number', (t) => {
+	const error = t.throws(() => {
+		listHelpers.split('foo', [], { last: 42 as any as boolean });
+	}, TypeError);
+
+	t.is(error.message, 'expected a Boolean value for options.last');
+});
+
 test('`split` splits a list by a custom character (e.g., forward slash)', (t) => {
 	t.deepEqual(
 		listHelpers.split('a/fn(b / c)', ['/']),
