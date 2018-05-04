@@ -1,35 +1,15 @@
-export interface IOptions {
-	last?: boolean;
-}
-
 export function split(
 	value: string,
 	separators: string[],
-	options: IOptions = {},
+	options: {
+		last?: boolean;
+	} = {},
 ) {
-	return _split(value, separators, options || {});
-}
-
-export function splitBySpaces(value: string) {
-	const spaces = [' ', '\n', '\t'];
-	return split(value, spaces);
-}
-
-export function splitByCommas(value: string) {
-	const comma = ',';
-	return split(value, [comma], { last: true });
-}
-
-export function _split(
-	value: string,
-	separators: string[],
-	options: IOptions = {},
-) {
-	const array   = [];
+	const array = [];
 	let current = '';
-	let splitMe   = false;
+	let splitMe = false;
 
-	let func    = 0;
+	let func = 0;
 	let quote: '"' | '\'' | false = false;
 	let escape  = false;
 
@@ -57,7 +37,7 @@ export function _split(
 			}
 		}
 
-		if (split) {
+		if (splitMe) {
 			if (current !== '') {
 				array.push(current.trim());
 			}
@@ -72,4 +52,14 @@ export function _split(
 		array.push(current.trim());
 	}
 	return array;
+}
+
+export function splitBySpaces(value: string) {
+	const spaces = [' ', '\n', '\t'];
+	return split(value, spaces);
+}
+
+export function splitByCommas(value: string) {
+	const comma = ',';
+	return split(value, [comma], { last: true });
 }
