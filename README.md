@@ -3,6 +3,7 @@
 [![NPM version](http://img.shields.io/npm/v/css-list-helpers.svg?style=flat)](https://www.npmjs.org/package/css-list-helpers)
 [![npm license](http://img.shields.io/npm/l/css-list-helpers.svg?style=flat-square)](https://www.npmjs.org/package/css-list-helpers)
 [![Travis Build Status](https://img.shields.io/travis/jedmao/css-list-helpers.svg?label=unix)](https://travis-ci.org/jedmao/css-list-helpers)
+[![codecov](https://codecov.io/gh/jedmao/css-list-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/jedmao/css-list-helpers)
 
 [![npm](https://nodei.co/npm/css-list-helpers.svg?downloads=true)](https://nodei.co/npm/css-list-helpers/)
 
