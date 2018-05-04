@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/jedmao/css-list-helpers#readme",
   "devDependencies": {
+    "@types/tape": "^4.2.32",
     "io-ts": "^1.0.6",
     "nyc": "^11.7.1",
     "tape": "^4.9.0",
