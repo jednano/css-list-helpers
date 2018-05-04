@@ -3,6 +3,7 @@
 [![NPM version](http://img.shields.io/npm/v/css-list-helpers.svg?style=flat)](https://www.npmjs.org/package/css-list-helpers)
 [![npm license](http://img.shields.io/npm/l/css-list-helpers.svg?style=flat-square)](https://www.npmjs.org/package/css-list-helpers)
 [![Travis Build Status](https://img.shields.io/travis/jedmao/css-list-helpers.svg?label=unix)](https://travis-ci.org/jedmao/css-list-helpers)
+[![codecov](https://codecov.io/gh/jedmao/css-list-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/jedmao/css-list-helpers)
 
 [![npm](https://nodei.co/npm/css-list-helpers.svg?downloads=true)](https://nodei.co/npm/css-list-helpers/)
 
@@ -18,10 +19,29 @@ $ npm install css-list-helpers [--save[-dev]]
 
 ```js
 var listHelpers = require('css-list-helpers');
-listHelpers.splitBySpaces(' 0 a(b / c) "d e" ');   // ['0', 'a(b / c)', '"d e"']
-listHelpers.splitByCommas(' 0, a(b / c), "d e" '); // ['0', 'a(b / c)', '"d e"']
-listHelpers.split('a/fn(b / c)', ['/']);           // ['a', 'fn(b / c)']
+
+listHelpers.splitBySpaces(' 0 a(b / c) "d e" ');
+// ['0', 'a(b / c)', '"d e"']
+
+listHelpers.splitByCommas(' 0, a(b / c), "d e" ');
+// ['0', 'a(b / c)', '"d e"']
+
+listHelpers.split('a/fn(b / c)', ['/']);
+// ['a', 'fn(b / c)']
 ```
+
+### ES6/2015 import
+
+```ts
+import * as listHelpers from 'css-list-helpers';
+```
+
+## Docs
+
+This project provides first-class TypeScript support via generated TypeScript
+definitions, included with the package. As such, you shouldn't have to
+look-up documentation in your editor, so long as your editor supports
+TypeScript.
 
 ## Testing
 

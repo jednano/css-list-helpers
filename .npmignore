@@ -1,4 +1,11 @@
-.*
-coverage/
-test/
-jsconfig.json
+.editorconfig
+.gitattributes
+*.yml
+ts*.json
+*.map
+*.tgz
+dist/**/*.test.js
+dist/**/*.test.d.ts
+src/
+css-list-helpers-*/
+.nyc_output
