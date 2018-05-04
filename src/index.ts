@@ -1,5 +1,15 @@
+/**
+ * Splits a CSS declaration value (shorthand) using provided separators
+ * as the delimiters.
+ */
 export function split(
+	/**
+	 * A CSS declaration value (shorthand).
+	 */
 	value: string,
+	/**
+	 * Any number of separator characters used for splitting.
+	 */
 	separators: string[],
 	options: {
 		last?: boolean;
@@ -54,12 +64,29 @@ export function split(
 	return array;
 }
 
-export function splitBySpaces(value: string) {
+/**
+ * Splits a CSS declaration value (shorthand) using whitespace characters
+ * as the delimiters.
+ */
+export function splitBySpaces(
+	/**
+	 * A CSS declaration value (shorthand).
+	 */
+	value: string,
+) {
 	const spaces = [' ', '\n', '\t'];
 	return split(value, spaces);
 }
 
-export function splitByCommas(value: string) {
+/**
+ * Splits a CSS declaration value (shorthand) using commas as the delimiters.
+ */
+export function splitByCommas(
+	/**
+	 * A CSS declaration value (shorthand).
+	 */
+	value: string,
+) {
 	const comma = ',';
 	return split(value, [comma], { last: true });
 }

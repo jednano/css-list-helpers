@@ -19,10 +19,29 @@ $ npm install css-list-helpers [--save[-dev]]
 
 ```js
 var listHelpers = require('css-list-helpers');
-listHelpers.splitBySpaces(' 0 a(b / c) "d e" ');   // ['0', 'a(b / c)', '"d e"']
-listHelpers.splitByCommas(' 0, a(b / c), "d e" '); // ['0', 'a(b / c)', '"d e"']
-listHelpers.split('a/fn(b / c)', ['/']);           // ['a', 'fn(b / c)']
+
+listHelpers.splitBySpaces(' 0 a(b / c) "d e" ');
+// ['0', 'a(b / c)', '"d e"']
+
+listHelpers.splitByCommas(' 0, a(b / c), "d e" ');
+// ['0', 'a(b / c)', '"d e"']
+
+listHelpers.split('a/fn(b / c)', ['/']);
+// ['a', 'fn(b / c)']
 ```
+
+### ES6/2015 import
+
+```ts
+import * as listHelpers from 'css-list-helpers';
+```
+
+## Docs
+
+This project provides first-class TypeScript support via generated TypeScript
+definitions, included with the package. As such, you shouldn't have to
+look-up documentation in your editor, so long as your editor supports
+TypeScript.
 
 ## Testing
 
